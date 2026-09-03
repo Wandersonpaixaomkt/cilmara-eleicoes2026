@@ -22,24 +22,48 @@ export const Route = createFileRoute("/")({
 /**
  * Home institucional — Cilmara Bonfim (Deputada Estadual · AVANTE 70700)
  *
- * Página objetiva: identidade, prioridades, resultados e voto.
+ * Página responsiva: identidade, prioridades, resultados e voto.
+ * Layout adaptativo: mobile-first com breakpoints em sm/md/lg.
  */
 function Home() {
   return (
-    <div className="min-h-screen bg-white text-ink">
+    <div className="min-h-screen bg-white text-ink overflow-hidden">
       <Header />
-      <main id="conteudo-principal">
+      <main id="conteudo-principal" className="w-full">
+        {/* Hero — já responsivo nativamente */}
         <Hero />
+        
+        {/* Features strip — cards flexíveis */}
         <FeaturesStrip />
+        
+        {/* Bloco de compromisso */}
         <CommitmentBlock />
+        
+        {/* Por que a candidatura */}
         <WhyCandidacy />
+        
+        {/* Equipe / Sobre */}
         <TeamBlock />
+        
+        {/* Método do mandato */}
         <MandateMethod />
+        
+        {/* Diagnóstico */}
         <DiagnosisSection />
+        
+        {/* Eixos de propostas */}
         <ProposalAxis />
+        
+        {/* Conquistas / Atuação */}
         <Achievements />
+        
+        {/* FAQ — Accordion responsivo */}
         <FAQ />
+        
+        {/* CTA + Formulário */}
         <CtaFormStrip />
+        
+        {/* Como votar */}
         <HowToVote />
       </main>
       <Footer />
