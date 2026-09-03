@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Apresentação da candidata.
- * Layout: foto à esquerda (sticky em telas grandes), card à direita
+ * Layout: foto à esquerda acompanhando a altura do card à direita
  * com biografia + destaques + dados pessoais + CTA.
  */
 export function AboutSection() {
@@ -19,25 +19,26 @@ export function AboutSection() {
         corLinha="blue"
       />
 
-      <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-10 items-start">
-        {/* Foto (sticky em desktop para acompanhar leitura) */}
-        <div className="lg:sticky lg:top-28">
+      <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-10 items-start lg:items-stretch">
+        {/* Foto: no desktop preenche a mesma altura do card de informações */}
+        <figure className="flex flex-col lg:h-full min-h-0">
           <PlaceholderImage
             texto={quemSou.fotoAlt}
-            aspect="video"
+            aspect="auto"
             variant="blue"
+            fluid
             src="/uploads/foto-quemsou"
             dimensaoEsperada="1200 × 800 px"
             caminhoSalvamento="public/uploads/foto-quemsou.png"
-            className="rounded-2xl"
+            className="rounded-2xl overflow-hidden aspect-video lg:aspect-auto lg:flex-1 lg:h-full lg:min-h-0"
           />
-          <p className="mt-3 text-xs text-ink-soft text-center lg:text-left">
+          <figcaption className="mt-3 text-xs text-ink-soft text-center lg:text-left">
             Foto principal · retrato institucional
-          </p>
-        </div>
+          </figcaption>
+        </figure>
 
         {/* Card à direita */}
-        <article className="card-flat p-6 md:p-8 flex flex-col gap-6 bg-white">
+        <article className="card-flat p-6 md:p-8 flex flex-col gap-6 bg-white h-full">
           <div className="flex flex-col gap-4">
             {quemSou.biografia.map((paragrafo, i) => (
               <p
