@@ -98,8 +98,8 @@ export const heroSlides: HeroSlide[] = [
 
 export const apresentacaoRapida = {
   titulo: "Conheça Cilmara Bonfim",
-  texto:
-    "Mulher surda, mãe e liderança comunitária de Parauapebas. Coordenadora da COMPED (2025–2026). Candidata a Deputada Estadual pelo Pará — AVANTE 70700.",
+  resumo: "Mulher surda, mãe e liderança comunitária de Parauapebas. Coordenadora da COMPED (2025–2026) e candidata a Deputada Estadual pelo Pará — AVANTE 70700.",
+  textoCompleto: "Cilmara Bonfim une vivência, escuta e experiência na gestão pública para defender inclusão, acessibilidade e cuidado com as famílias no Pará. Como mulher surda e mãe atípica, ela conhece as barreiras que milhares de paraenses enfrentam diariamente: a falta de interpretes em hospitais, a ausência de atendimento especializado no interior, a sobrecarga das mães que abandonam empregos para cuidar de filhos com deficiência. Foi exatamente essa vivência que a levou à COMPED, onde coordenou entregas concretas como 28 cadeiras de rodas, mutirões de Ciptea e a Trilha Inclusiva Quarubarana em Carajás.",
   fotoUrl: "/uploads/foto-apresentacao.jpg",
   fotoAlt: "Retrato institucional de Cilmara Bonfim comunicando-se em Libras",
   cards: [
@@ -108,7 +108,7 @@ export const apresentacaoRapida = {
     { id: "card-3", rotulo: "Partido", valor: "AVANTE" },
     { id: "card-4", rotulo: "Estado", valor: "Pará (PA)" },
   ],
-  botao: { label: "Ver apresentação completa", href: "#sobre" },
+  botao: { label: "Continuar lendo", href: "/sobre" },
 };
 
 /* ──────────────────────────────────────────────────────────────
@@ -143,6 +143,7 @@ export const quemSou = {
 
 export const porQue = {
   titulo: "Por que Cilmara se candidata",
+  resumo: "No Pará, milhares de pessoas com deficiência, surdos e autistas enfrentam barreiras diárias: atendimento especializado concentrado em Belém, falta de intérpretes em hospitais e delegacias, mães que abandonam empregos para cuidar de filhos. A inclusão ainda é tratada como assistencialismo sazonal.",
   citacao:
     "Minha história me ensinou que inclusão não pode ser promessa distante. Ela precisa estar na escola, na saúde, no trabalho, no transporte, na comunicação e no respeito. Foi por isso que escolhi transformar vivência em luta coletiva.",
   citacaoFonte: "Cilmara Bonfim",
@@ -381,6 +382,7 @@ export const eixos: Eixo[] = [
 
 export const metodoMandato = {
   titulo: "Como Cilmara trabalha",
+  resumo: "Quatro princípios operacionais: gabinete bilíngue em Libras, presença permanente nos territórios do interior, conselho popular para avaliar projetos antes de protocolar e prestação de contas aberta em vídeo com Libras.",
   subtitulo: "Princípios operacionais do futuro gabinete na ALEPA.",
   principios: [
     {
@@ -414,7 +416,8 @@ export const diagnostico = [
   {
     id: "dor-1",
     numero: "01",
-    titulo: "Barreira de comunicação nos serviços estaduais de emergência",
+    titulo: "Barreira de comunicação nos serviços estaduais",
+    resumo: "Pessoas surdas não conseguem relatar sintomas em hospitais ou agressões em delegacias porque servidores não dominam Libras e inexiste intérprete por videochamada.",
     problema:
       "Pessoas surdas em pronto-socorro ou delegacia estadual não conseguem relatar sintomas ou agressões porque servidores não dominam Libras e inexiste intérprete por chamada de vídeo.",
     onde: "Hospitais regionais, UPAs, DETRAN e delegacias em todas as regiões do Pará.",
@@ -424,7 +427,8 @@ export const diagnostico = [
   {
     id: "dor-2",
     numero: "02",
-    titulo: "Desassistência especializada em TEA e saúde mental no interior",
+    titulo: "Desassistência em TEA e saúde mental no interior",
+    resumo: "Falta de neuropediatras e psicólogos infantis no SUS fora de Belém obriga mães e crianças a viagens de até 20 horas de ônibus, com abandono do tratamento.",
     problema:
       "Falta de neuropediatras, psicólogos infantis e fonoaudiólogos credenciados no SUS fora de Belém obriga mães e crianças a viagens de 12 a 20 horas de ônibus, com descompensação e abandono do tratamento.",
     onde: "Carajás, Baixo Amazonas, Tapajós, Xingu e Arquipélago do Marajó.",
@@ -434,7 +438,8 @@ export const diagnostico = [
   {
     id: "dor-3",
     numero: "03",
-    titulo: "Sobrecarga extrema e exclusão social das mães atípicas",
+    titulo: "Sobrecarga extrema das mães atípicas",
+    resumo: "Mais de 80% das mães de crianças com deficiência grave abandonam empregos formais para cuidar dos filhos, vivendo sem renda, sem suporte psicológico e sob risco de isolamento.",
     problema:
       "Mais de 80% das mães de crianças com deficiência grave abrem mão de empregos formais para cumprir rotinas exaustivas de terapias, vivendo sem renda própria, sem suporte psicológico e sob risco constante de isolamento.",
     onde: "Periferias urbanas, comunidades ribeirinhas e rurais de todo o Pará.",
@@ -544,10 +549,10 @@ export const atuacao: Acao[] = [
 
 /* Indicadores numéricos da seção "O que já fez" (placeholders) */
 export const statsAtuacao = [
-  { id: "st-1", rotulo: "Votos em 2022 (Pará)",          valor: "4.665" },
-  { id: "st-2", rotulo: "Votos em 2024 (Parauapebas)",   valor: "1.570" },
-  { id: "st-3", rotulo: "Cadeiras entregues (CER II)",    valor: "28" },
-  { id: "st-4", rotulo: "Metros de trilha inclusiva",     valor: "2.400" },
+  { id: "st-1", rotulo: "Votos em 2022 (Pará)",          valor: "4.665", destaque: "+104% em relação a 2020" },
+  { id: "st-2", rotulo: "Votos em 2024 (Parauapebas)",   valor: "1.570", destaque: "Suplência vereadora" },
+  { id: "st-3", rotulo: "Cadeiras entregues (CER II)",    valor: "28", destaque: "Pessoas atendidas" },
+  { id: "st-4", rotulo: "Metros de trilha inclusiva",     valor: "2.400", destaque: "Na Flona de Carajás" },
 ];
 
 /* ──────────────────────────────────────────────────────────────
@@ -777,11 +782,12 @@ export const faqItems: FaqItem[] = [
    ────────────────────────────────────────────────────────────── */
 
 export const navPrincipal = [
-  { label: "Início",     href: "#inicio" },
-  { label: "Cilmara",    href: "#quem-sou" },
-  { label: "Propostas",  href: "#propostas" },
-  { label: "Atuação",    href: "#atuacao" },
-  { label: "Como votar", href: "#como-votar" },
+  { label: "Início",      href: "/" },
+  { label: "Sobre",       href: "/sobre" },
+  { label: "Propostas",   href: "/propostas" },
+  { label: "Atuação",     href: "/atuacao" },
+  { label: "Materiais",   href: "/materiais" },
+  { label: "Contato",     href: "/contato" },
 ];
 
 /* ──────────────────────────────────────────────────────────────
@@ -875,3 +881,56 @@ export const seo = {
     "mães atípicas",
   ],
 };
+
+/* ──────────────────────────────────────────────────────────────
+   19.1. RESUMOS PARA A HOME PAGE
+   ────────────────────────────────────────────────────────────── */
+
+export interface HomeSummary {
+  id: string;
+  titulo: string;
+  resumo: string;
+  destaque: string;
+  href: string;
+  icone: LucideIconType;
+  cor: "blue" | "orange";
+}
+
+export const homeSummaries: HomeSummary[] = [
+  {
+    id: "sobre",
+    titulo: "Sobre Cilmara",
+    resumo: "Mulher surda, mãe atípica e ex-coordenadora da COMPED. Conheça sua história, motivações e o que a levou a se candidatar.",
+    destaque: "Biografia completa",
+    href: "/sobre",
+    icone: Accessibility,
+    cor: "blue",
+  },
+  {
+    id: "propostas",
+    titulo: "18 Propostas",
+    resumo: "Quatro eixos temáticos: inclusão e acessibilidade, TEA e saúde mental, mulheres e idosos, mineração responsável.",
+    destaque: "Ver todas as propostas",
+    href: "/propostas",
+    icone: Brain,
+    cor: "orange",
+  },
+  {
+    id: "atuacao",
+    titulo: "Atuação",
+    resumo: "Entregas concretas na COMPED: 28 cadeiras de rodas, mutirões Ciptea, Trilha Inclusiva em Carajás e mais.",
+    destaque: "Ver linha do tempo",
+    href: "/atuacao",
+    icone: GraduationCap,
+    cor: "blue",
+  },
+  {
+    id: "como-votar",
+    titulo: "Vote 70700",
+    resumo: "Deputada Estadual pelo AVANTE. Digite 70700 na urna eletrônica e confirme. Guia completo.",
+    destaque: "Como votar",
+    href: "/como-votar",
+    icone: Shield,
+    cor: "orange",
+  },
+];
