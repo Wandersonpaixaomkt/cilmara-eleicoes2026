@@ -4,28 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
+/* ============================================================
+   DESIGN TOKENS — Cilmara Bonfim
+   Sistema modular baseado em variáveis CSS para fácil manutenção.
+   Paleta: Azul (primária) + Laranja (destaque) + Branco/Preto (neutros)
+   Sem degradês, sem efeitos 3D, foco em design flat e modular.
+   ============================================================ */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.125rem;
+  --radius-2xl: 1.5rem;
+
+  /* Mapeamento para shadcn */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -45,100 +38,257 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Cores da campanha */
+  --color-blue-50: var(--blue-50);
+  --color-blue-100: var(--blue-100);
+  --color-blue-200: var(--blue-200);
+  --color-blue-500: var(--blue-500);
+  --color-blue-600: var(--blue-600);
+  --color-blue-700: var(--blue-700);
+  --color-blue-900: var(--blue-900);
+
+  --color-orange-50: var(--orange-50);
+  --color-orange-100: var(--orange-100);
+  --color-orange-500: var(--orange-500);
+  --color-orange-600: var(--orange-600);
+  --color-orange-700: var(--orange-700);
+
+  --color-ink-50: var(--ink-50);
+  --color-ink-100: var(--ink-100);
+  --color-ink-500: var(--ink-500);
+  --color-ink-700: var(--ink-700);
+  --color-ink-900: var(--ink-900);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
+  /* ====== TIPOGRAFIA ====== */
+  --font-sans: "Sora", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* ====== CORES NEUTRAS ====== */
+  --ink-50: #F7F8FA;
+  --ink-100: #EEF1F5;
+  --ink-500: #6B7280;
+  --ink-700: #374151;
+  --ink-900: #0B1220;
+
+  /* ====== CORES BRAND: AZUL (principal) ====== */
+  --blue-50: #EFF6FF;
+  --blue-100: #DBEAFE;
+  --blue-200: #BFDBFE;
+  --blue-500: #1E3A8A;
+  --blue-600: #142C6B;   /* principal navy */
+  --blue-700: #0F2154;
+  --blue-900: #08163A;
+
+  /* ====== CORES BRAND: LARANJA (destaque) ====== */
+  --orange-50: #FFF4E5;
+  --orange-100: #FFE4C2;
+  --orange-500: #F97316;
+  --orange-600: #EA580C; /* destaque */
+  --orange-700: #B2430A;
+
+  /* ====== TOKENS shadcn (mapeados) ====== */
+  --background: #FFFFFF;
+  --foreground: var(--ink-900);
+  --card: #FFFFFF;
+  --card-foreground: var(--ink-900);
+  --popover: #FFFFFF;
+  --popover-foreground: var(--ink-900);
+  --primary: var(--blue-600);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--blue-50);
+  --secondary-foreground: var(--blue-700);
+  --muted: var(--ink-50);
+  --muted-foreground: var(--ink-500);
+  --accent: var(--orange-50);
+  --accent-foreground: var(--orange-700);
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: var(--blue-600);
+
+  /* ====== TOKENS DE UI ====== */
+  /* Header sticky height — usado para scroll-margin-top das âncoras */
+  --header-h: 5rem;       /* 80px (h-20) no desktop */
+  --header-h-mobile: 4rem; /* 64px (h-16) no mobile */
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
+  * { border-color: var(--color-border); }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
+
+  /* Hierarquia tipográfica — leading mais respirável em todos os títulos */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    color: var(--ink-900);
+    letter-spacing: -0.015em;
+    font-weight: 700;
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+
+  h1 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.08; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.15; }
+  h3 { font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.25; }
+  h4 { font-size: 1.125rem; line-height: 1.3; }
+  h5 { font-size: 1rem; line-height: 1.4; }
+  h6 { font-size: 0.875rem; line-height: 1.4; }
+
+  p { color: var(--ink-700); line-height: 1.7; text-wrap: pretty; }
+
+  /* Âncoras dentro do header sticky: offset para que o título não suma sob o menu.
+     O fallback mobile é menor; o desktop é tratado em CSS por breakpoint. */
+  :target,
+  section[id] { scroll-margin-top: var(--header-h-mobile); }
+  @media (min-width: 768px) {
+    :target,
+    section[id] { scroll-margin-top: var(--header-h); }
+  }
+
+  /* Foco visível único (não duplicar) */
+  :focus-visible {
+    outline: 2px solid var(--blue-600);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--blue-200);
+    color: var(--ink-900);
+  }
+
+  /* Scrollbar suave em WebKit (Chrome/Safari) */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--ink-100);
+    border-radius: 999px;
+    border: 2px solid var(--background);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--ink-500); }
+
+  /* Autofill do Chrome — mantém a paleta */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: var(--ink-900) !important;
+    caret-color: var(--ink-900);
+  }
+}
+
+/* ============================================================
+   CLASSES UTILITÁRIAS DA CAMPANHA
+   ============================================================ */
+.bg-blue { background-color: var(--blue-600); }
+.bg-blue-soft { background-color: var(--blue-50); }
+.bg-blue-deep { background-color: var(--blue-700); }
+.bg-orange { background-color: var(--orange-600); }
+.bg-orange-soft { background-color: var(--orange-50); }
+.bg-ink { background-color: var(--ink-900); }
+.bg-ink-soft { background-color: var(--ink-50); }
+
+.text-blue { color: var(--blue-600); }
+.text-blue-deep { color: var(--blue-700); }
+.text-orange { color: var(--orange-600); }
+.text-ink { color: var(--ink-900); }
+.text-ink-soft { color: var(--ink-500); }
+.text-white { color: #FFFFFF; }
+
+.border-blue { border-color: var(--blue-600); }
+.border-orange { border-color: var(--orange-600); }
+.border-ink-soft { border-color: #E5E7EB; }
+
+/* Faixas decorativas (linhas sólidas usadas como divisores de seção) */
+.divider-blue { height: 4px; background-color: var(--blue-600); }
+.divider-orange { height: 4px; background-color: var(--orange-600); }
+
+/* Card flat — sombra polida de 2 níveis (idle + hover), transição curta */
+.card-flat {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 2px rgba(15, 33, 84, 0.04);
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+.card-flat:hover {
+  border-color: var(--blue-200);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -12px rgba(15, 33, 84, 0.18);
+}
+
+/* Estado pressionado — feedback tátil sutil */
+.card-flat:active { transform: translateY(-1px); }
+
+/* Sombra padrão para elementos elevados (botões, modais) */
+.elevated {
+  box-shadow:
+    0 1px 2px rgba(15, 33, 84, 0.06),
+    0 8px 24px -8px rgba(15, 33, 84, 0.12);
+}
+
+/* Animação de entrada discreta */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out both; }
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* Reduce motion para acessibilidade — desativa tudo com suavidade */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch target universal para mobile (mínimo 44px² recomendado WCAG) */
+@media (max-width: 767px) {
+  button:not(:disabled),
+  a[href] {
+    -webkit-tap-highlight-color: rgba(20, 44, 107, 0.08);
+  }
+}
+
+/* Hover de links dentro do conteúdo (lê melhor, mais consistente) */
+.link-quiet {
+  color: var(--blue-600);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 150ms ease, text-decoration-thickness 150ms ease;
+}
+.link-quiet:hover {
+  color: var(--blue-700);
+  text-decoration-thickness: 2px;
 }
