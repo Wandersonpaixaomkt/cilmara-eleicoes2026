@@ -1,16 +1,120 @@
-import { MapPin, Calendar, ArrowRight, Quote } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { LucideIcon } from "lucide-react";
+import {
+  MapPin,
+  Calendar,
+  ArrowRight,
+  Quote,
+  Accessibility,
+  Brain,
+  Trees,
+} from "lucide-react";
 import { Section } from "@/components/ui-custom/section";
-import { SectionTitle } from "@/components/ui-custom/section";
 import { StatCard } from "@/components/ui-custom/stat-card";
-import { PlaceholderImage } from "@/components/ui-custom/placeholder-image";
 import { Badge } from "@/components/ui-custom/badge";
 import { atuacao, statsAtuacao } from "@/data/site";
+import { resolveImageUrl } from "@/lib/image-resolver";
+import { cn } from "@/lib/utils";
+
+const entregaArte: Array<{
+  Icon: LucideIcon;
+  variant: "blue" | "orange";
+  src: string;
+}> = [
+  { Icon: Accessibility, variant: "blue", src: "/uploads/atuacao-1" },
+  { Icon: Brain, variant: "orange", src: "/uploads/atuacao-2" },
+  { Icon: Trees, variant: "blue", src: "/uploads/atuacao-3" },
+];
+
+function EntregaVisual({
+  src,
+  alt,
+  Icon,
+  variant,
+  rotulo,
+}: {
+  src: string;
+  alt: string;
+  Icon: LucideIcon;
+  variant: "blue" | "orange";
+  rotulo: string;
+}) {
+  const [url, setUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    resolveImageUrl(src, undefined, controller.signal)
+      .then((resolvida) => setUrl(resolvida))
+      .catch(() => setUrl(null));
+    return () => controller.abort();
+  }, [src]);
+
+  const isBlue = variant === "blue";
+
+  return (
+    <div
+      className={cn(
+        "relative aspect-video overflow-hidden",
+        isBlue ? "bg-blue-soft" : "bg-orange-soft"
+      )}
+    >
+      {url ? (
+        <img
+          src={url}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center" aria-hidden>
+          <span
+            className={cn(
+              "absolute left-[12%] top-[22%] w-10 h-10 rounded-full opacity-70",
+              isBlue ? "bg-blue/15" : "bg-orange/20"
+            )}
+          />
+          <span
+            className={cn(
+              "absolute right-[16%] top-[18%] w-6 h-6 rounded-full opacity-80",
+              isBlue ? "bg-blue/20" : "bg-orange/25"
+            )}
+          />
+          <span
+            className={cn(
+              "absolute right-[22%] bottom-[20%] w-14 h-14 rounded-full opacity-50",
+              isBlue ? "bg-white" : "bg-white"
+            )}
+          />
+          <span
+            className={cn(
+              "absolute left-[18%] bottom-[18%] w-3 h-3 rounded-full",
+              isBlue ? "bg-orange" : "bg-blue"
+            )}
+          />
+          <span className="w-20 h-20 rounded-full bg-white shadow-sm flex items-center justify-center">
+            <Icon className={cn("w-10 h-10", isBlue ? "text-blue" : "text-orange")} />
+          </span>
+        </div>
+      )}
+
+      <span
+        className={cn(
+          "absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white",
+          isBlue ? "text-blue" : "text-orange"
+        )}
+      >
+        {rotulo}
+      </span>
+    </div>
+  );
+}
 
 /**
  * Seção "Trabalho e Atuação".
  * - Cabeçalho com CTA "Ver linha do tempo"
  * - 4 stats com stripe colorido e tabular-nums
- * - Cards de entregas-chave com hover elevado e CTA no rodapé
+ * - Cards de entregas-chave com infográfico / ícone no topo
  */
 export function Achievements() {
   return (
@@ -62,53 +166,45 @@ export function Achievements() {
 
       {/* Cards de ações */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {atuacao.slice(0, 3).map((acao, i) => (
-          <article
-            key={acao.id}
-            className="card-flat overflow-hidden flex flex-col bg-white"
-          >
-            <div className="relative">
-              <PlaceholderImage
-                src={`/uploads/atuacao-${i + 1}`}
-                texto={acao.imagemAlt}
-                dimensaoEsperada="1200 × 800 px"
-                caminhoSalvamento={`public/uploads/atuacao-${i + 1}.png`}
-                aspect="video"
-                variant={i % 2 === 0 ? "blue" : "orange"}
-                className="rounded-none"
+        {atuacao.slice(0, 3).map((acao, i) => {
+          const arte = entregaArte[i];
+          return (
+            <article
+              key={acao.id}
+              className="card-flat overflow-hidden flex flex-col bg-white"
+            >
+              <EntregaVisual
+                src={arte.src}
+                alt={acao.imagemAlt}
+                Icon={arte.Icon}
+                variant={arte.variant}
+                rotulo={`Entrega ${String(i + 1).padStart(2, "0")}`}
               />
-              <span
-                className={`absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                  i % 2 === 0 ? "bg-white text-blue" : "bg-white text-orange"
-                }`}
-              >
-                Entrega {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
 
-            <div className="p-6 flex flex-col gap-3 flex-1">
-              <Badge variant={i % 2 === 0 ? "blue" : "orange"} estilo="soft">
-                {acao.categoria}
-              </Badge>
-              <h3 className="text-base font-extrabold text-ink leading-snug">
-                {acao.titulo}
-              </h3>
-              <p className="text-sm text-ink-soft leading-relaxed flex-1">
-                {acao.descricao}
-              </p>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-ink-soft pt-3 border-t border-ink-soft">
-                <span className="inline-flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5" aria-hidden />
-                  {acao.data}
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5" aria-hidden />
-                  {acao.local}
-                </span>
+              <div className="p-6 flex flex-col gap-3 flex-1">
+                <Badge variant={i % 2 === 0 ? "blue" : "orange"} estilo="soft">
+                  {acao.categoria}
+                </Badge>
+                <h3 className="text-base font-extrabold text-ink leading-snug">
+                  {acao.titulo}
+                </h3>
+                <p className="text-sm text-ink-soft leading-relaxed flex-1">
+                  {acao.descricao}
+                </p>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-ink-soft pt-3 border-t border-ink-soft">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5" aria-hidden />
+                    {acao.data}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" aria-hidden />
+                    {acao.local}
+                  </span>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </Section>
   );
