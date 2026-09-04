@@ -16,7 +16,7 @@ import { atuacao, statsAtuacao } from "@/data/site";
 import { resolveImageUrl } from "@/lib/image-resolver";
 import { cn } from "@/lib/utils";
 
-const entregaArte: Array<{
+const entregaArte: ReadonlyArray<{
   Icon: LucideIcon;
   variant: "blue" | "orange";
   src: string;
@@ -25,6 +25,8 @@ const entregaArte: Array<{
   { Icon: Brain, variant: "orange", src: "/uploads/atuacao-2" },
   { Icon: Trees, variant: "blue", src: "/uploads/atuacao-3" },
 ];
+
+const ARTE_FALLBACK = entregaArte[0]!;
 
 function EntregaVisual({
   src,
@@ -167,7 +169,7 @@ export function Achievements() {
       {/* Cards de ações */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {atuacao.slice(0, 3).map((acao, i) => {
-          const arte = entregaArte[i];
+          const arte = entregaArte[i] ?? ARTE_FALLBACK;
           return (
             <article
               key={acao.id}

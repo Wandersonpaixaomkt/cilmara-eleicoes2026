@@ -138,6 +138,19 @@ export const quemSou = {
 };
 
 /* ──────────────────────────────────────────────────────────────
+   3.0. OPÇÕES DO FORMULÁRIO DE CONTATO
+   ────────────────────────────────────────────────────────────── */
+
+export const formOptions: { value: string; label: string }[] = [
+  { value: "apoiar",     label: "Quero apoiar / receber novidades" },
+  { value: "voluntario", label: "Quero ser voluntário(a)" },
+  { value: "reuniao",    label: "Quero uma reunião / apresentar a candidatura" },
+  { value: "pauta",      label: "Quero enviar uma pauta do meu município" },
+  { value: "imprensa",   label: "Fale com a campanha / imprensa" },
+  { value: "material",   label: "Quero material para divulgar" },
+];
+
+/* ──────────────────────────────────────────────────────────────
    3.1. POR QUE SE CANDIDATA (tensão central + citação)
    ────────────────────────────────────────────────────────────── */
 

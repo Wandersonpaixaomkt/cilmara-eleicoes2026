@@ -12,8 +12,7 @@ import { DiagnosisSection } from "@/components/sections/diagnosis";
 import { ProposalAxis } from "@/components/sections/proposal-axis";
 import { Achievements } from "@/components/sections/achievements";
 import { FAQ } from "@/components/sections/faq";
-import { CtaFormStrip } from "@/components/sections/cta-form-strip";
-import { HowToVote } from "@/components/sections/how-to-vote";
+import { ContactSection } from "@/components/sections/contact-section";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -32,39 +31,36 @@ function Home() {
       <main id="conteudo-principal" className="w-full">
         {/* Hero — já responsivo nativamente */}
         <Hero />
-        
+
         {/* Features strip — cards flexíveis */}
         <FeaturesStrip />
-        
+
         {/* Bloco de compromisso */}
         <CommitmentBlock />
-        
+
         {/* Por que a candidatura */}
         <WhyCandidacy />
-        
+
         {/* Equipe / Sobre */}
         <TeamBlock />
-        
+
         {/* Método do mandato */}
         <MandateMethod />
-        
+
         {/* Diagnóstico */}
         <DiagnosisSection />
-        
+
         {/* Eixos de propostas */}
         <ProposalAxis />
-        
+
         {/* Conquistas / Atuação */}
         <Achievements />
-        
+
         {/* FAQ — Accordion responsivo */}
         <FAQ />
-        
-        {/* CTA + Formulário */}
-        <CtaFormStrip />
-        
-        {/* Como votar */}
-        <HowToVote />
+
+        {/* Fale com a campanha — formulário + contato + redes */}
+        <ContactSection />
       </main>
       <Footer />
     </div>

@@ -16,7 +16,7 @@ export function CandidateIntro() {
       <SectionTitle
         eyebrow="Sobre a candidata"
         titulo={apresentacaoRapida.titulo}
-        subtitulo={apresentacaoRapida.texto}
+        subtitulo={apresentacaoRapida.resumo}
         corLinha="blue"
       />
 

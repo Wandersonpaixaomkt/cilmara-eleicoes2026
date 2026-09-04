@@ -1,61 +1,69 @@
-import { candidata, navPrincipal } from "@/data/site";
-import { ImagesCatalog } from "@/components/ui-custom/images-catalog";
+import { candidata } from "@/data/site";
 
 /**
- * Rodapé do site.
- * Inclui:
- *  - Identidade da candidatura
- *  - Navegação rápida
- *  - Bloco discreto "Equipe · Catálogo de imagens" (accordion)
- *  - Aviso legal e copyright
+ * Rodapé institucional enxuto.
+ * Estrutura padrão de site:
+ *   - Identidade (logo + nome + cargo)
+ *   - Links rápidos
+ *   - Copyright
  */
 export function Footer() {
   const ano = new Date().getFullYear();
 
   return (
-    <footer className="bg-blue text-white">
-      <div className="container mx-auto px-4 py-10">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+    <footer className="bg-ink-soft border-t border-ink-100 text-ink-soft">
+      <div className="container mx-auto px-4 py-8 md:py-10">
+        <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:items-center md:text-left">
+          {/* Identidade */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center" aria-hidden>
-              <span className="text-white font-black text-[10px]">LOGO</span>
-            </div>
-            <div>
-              <p className="font-extrabold">{candidata.nome} {candidata.sobrenome}</p>
-              <p className="text-sm text-white/75">Deputada Estadual · <strong className="text-white">{candidata.numero}</strong></p>
-            </div>
+            <span
+              className="w-8 h-8 rounded-md bg-blue flex items-center justify-center text-white font-black text-[10px]"
+              aria-hidden
+            >
+              LOGO
+            </span>
+            <p className="text-sm font-bold text-ink">
+              {candidata.nome} {candidata.sobrenome} ·{" "}
+              <span className="text-ink-soft font-medium">
+                {candidata.cargo} · {candidata.numero}
+              </span>
+            </p>
           </div>
-          <nav aria-label="Navegação do rodapé">
-            <ul className="flex flex-wrap gap-x-5 gap-y-2">
-              {navPrincipal.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="text-sm text-white/80 hover:text-white transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+
+          {/* Links rápidos */}
+          <nav aria-label="Links do rodapé">
+            <ul className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm">
+              <li>
+                <a href="#inicio" className="hover:text-blue transition-colors">
+                  Início
+                </a>
+              </li>
+              <li>
+                <a href="#sobre" className="hover:text-blue transition-colors">
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a href="#propostas" className="hover:text-blue transition-colors">
+                  Propostas
+                </a>
+              </li>
+              <li>
+                <a href="#contato" className="hover:text-blue transition-colors">
+                  Contato
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
-      </div>
 
-      {/* Bloco administrativo: catálogo de imagens (accordion) */}
-      <ImagesCatalog />
+        {/* Linha divisória */}
+        <div className="my-6 border-t border-ink-100" />
 
-      <div className="border-t border-white/10">
-        <div className="container mx-auto px-4 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-white/70">
-          <p>© {ano} {candidata.nome} {candidata.sobrenome}. Todos os direitos reservados.</p>
-          <a
-            href="#imagens"
-            className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
-            title="Abrir catálogo de imagens do site"
-          >
-            <span aria-hidden>📷</span> Imagens do site
-          </a>
-        </div>
+        {/* Copyright */}
+        <p className="text-center text-xs text-ink-soft">
+          © {ano} {candidata.nome} {candidata.sobrenome} · Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   );
