@@ -49,8 +49,10 @@ export function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-blue leading-[1.05] tracking-tight">
-              A inclusão começa<br className="hidden sm:inline" />
-              onde a pessoa<br className="hidden sm:inline" />
+              A inclusão começa{" "}
+              <br className="hidden sm:inline" />
+              onde a pessoa{" "}
+              <br className="hidden sm:inline" />
               é ouvida.
             </h1>
 
